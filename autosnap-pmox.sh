@@ -123,9 +123,7 @@ cleanup_old_snapshots(){
     return 0
   fi
 
-  # Extrai NOME correto removendo indent e o “galho” (`->`, '|->', '+->', '->'), depois pega o 1º campo
-  # Ex.: "   `-> auto-20251103-104630  2025-11-03 10:46:34  desc"
-  #      vira "auto-20251103-104630  2025-11-03 10:46:34  desc"
+
   mapfile -t candidates < <(
     awk -v pfx="$matchprefix" '
       /^[[:space:]]/ {
@@ -258,3 +256,4 @@ main(){
   log "autosnap finalizado."
 }
 main
+
